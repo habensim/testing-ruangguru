@@ -1,6 +1,5 @@
 ***Settings***
 Documentation     Performs Testing Based On Keyword price duration rated
-# Test Teardown     Close Browser
 Resource          ../../keywords/api/keywordsApi.robot
 Resource          ../../locators/locatorskillacademy.robot
 
