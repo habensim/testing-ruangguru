@@ -1,10 +1,7 @@
 *** Settings ***
 DOCUMENTATION         Search Based on keyword available
 ...                   tests cases to API "https://skillacademy.com/api/skillacademy/discovery/search".
-Library               Collections                                       WITH NAME        collection
 Library               RequestsLibrary                                   WITH NAME        request
-Library               BuiltIn                                           WITH NAME        std
-Library               OperatingSystem                                   WITH NAME        system
 
 
 Resource          ../../locators/locatorskillacademy.robot

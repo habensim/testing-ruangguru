@@ -1,5 +1,10 @@
 # testing-ruangguru
+Automation Api dan web SkillAcademy
 
+# Automation Tools 
+- robotframework
+- RequestsLibrary
+- SeleniumLibrary
 
 ## How to Run Testing API
  
