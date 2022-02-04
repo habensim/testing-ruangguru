@@ -6,7 +6,7 @@ Documentation     Locators to find URL, Browser, Keywords
 ${url_skillacademy}                          https://skillacademy.com/ 
 ${browser}                      Chrome
 ${skillavailable}               Bahasa Inggris
-${skillnotavailable}            Selenium Tutorial
+${skillnotavailable}            asdkasdas
 ${skillavailableapi}            bahasa
 ${page}                         2 
 ${pageSize}                     2

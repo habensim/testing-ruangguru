@@ -1,294 +1,1967 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.3 (Python 3.8.10 on linux)" generated="20220204 22:51:29.864" rpa="false" schemaversion="2">
+<robot generator="Robot 4.1.3 (Python 3.8.10 on linux)" generated="20220204 23:23:01.016" rpa="false" schemaversion="2">
 <suite id="s1" name="searchWeb" source="/home/haben/Documents/QA/LAB/ROBOT-TEST/testing-ruangguru/test/web/searchWeb.robot">
 <test id="s1-t1" name="Search web">
+<kw name="Based on available keyword" library="keywordSearch">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_skillacademy}</arg>
+<arg>chrome</arg>
+<arg>alias=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220204 23:23:01.108" level="INFO">Opening browser 'chrome' to base url 'https://skillacademy.com/'.</msg>
+<status status="PASS" starttime="20220204 23:23:01.108" endtime="20220204 23:23:04.796"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220204 23:23:04.797" endtime="20220204 23:23:05.248"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>${skillavailable}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:05.249" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:05.249" endtime="20220204 23:23:05.408"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220204 23:23:05.409" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:05.696" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:05.696" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:05.408" endtime="20220204 23:23:05.718"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url_skillacademy}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220204 23:23:05.721" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:05.718" endtime="20220204 23:23:05.721"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${url_skillacademy}</arg>
+<arg>https://skillacademy.com/.*</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20220204 23:23:05.721" endtime="20220204 23:23:05.721"/>
+</kw>
+<kw name="Content Course" library="contentCourse">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:05.722" endtime="20220204 23:23:05.733"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${judul}</var>
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:05.749" level="INFO">${judul} = Tryout Seleksi PPPK Guru IPA SMP</msg>
+<status status="PASS" starttime="20220204 23:23:05.733" endtime="20220204 23:23:05.749"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample Title ${judul}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:05.749" endtime="20220204 23:23:05.750"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:05.750" endtime="20220204 23:23:06.553"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructorname}</var>
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.567" level="INFO">${instructorname} = Khairun Nisa, Irna Artiani, FAQIH</msg>
+<status status="PASS" starttime="20220204 23:23:06.553" endtime="20220204 23:23:06.567"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor name ${instructorname}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.567" endtime="20220204 23:23:06.567"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.567" endtime="20220204 23:23:06.576"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructordesc}</var>
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.592" level="INFO">${instructordesc} = -International Test Preparation Specialist di SUN Education Group, -Instructor di SUN Education, -Instructor di SUN Education</msg>
+<status status="PASS" starttime="20220204 23:23:06.576" endtime="20220204 23:23:06.592"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor description ${instructordesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.592" endtime="20220204 23:23:06.593"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.593" endtime="20220204 23:23:06.603"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${coursedesc}</var>
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.622" level="INFO">${coursedesc} = Detail Kelas
+Bahasa Inggris merupakan bahasa global yang digunakan dalam konteks profesional, terutama ketika kita berbisnis dengan orang lain. Penggunaan bahasa Inggris ini berkembang dengan pesat, b...</msg>
+<status status="PASS" starttime="20220204 23:23:06.603" endtime="20220204 23:23:06.622"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample course description ${coursedesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.622" endtime="20220204 23:23:06.623"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.623" endtime="20220204 23:23:06.637"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.655" level="INFO">${starrating} = </msg>
+<status status="PASS" starttime="20220204 23:23:06.637" endtime="20220204 23:23:06.655"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Star Rating ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.655" endtime="20220204 23:23:06.655"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.655" endtime="20220204 23:23:06.662"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.676" level="INFO">${starrating} = 4.9</msg>
+<status status="PASS" starttime="20220204 23:23:06.662" endtime="20220204 23:23:06.676"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Text ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.676" endtime="20220204 23:23:06.676"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.676" endtime="20220204 23:23:06.686"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${ratingcount}</var>
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.705" level="INFO">${ratingcount} = (710 rating)</msg>
+<status status="PASS" starttime="20220204 23:23:06.687" endtime="20220204 23:23:06.705"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Count ${ratingcount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.705" endtime="20220204 23:23:06.705"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.705" endtime="20220204 23:23:06.713"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricebase}</var>
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.728" level="INFO">${pricebase} = Rp 890.000</msg>
+<status status="PASS" starttime="20220204 23:23:06.713" endtime="20220204 23:23:06.728"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Base ${pricebase}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.728" endtime="20220204 23:23:06.728"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.729" endtime="20220204 23:23:06.739"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricefinal}</var>
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.752" level="INFO">${pricefinal} = Rp 250.000</msg>
+<status status="PASS" starttime="20220204 23:23:06.739" endtime="20220204 23:23:06.752"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Sample Title</arg>
+<arg>${pricefinal}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.752" endtime="20220204 23:23:06.752"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.752" endtime="20220204 23:23:06.764"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${buttonbuy}</var>
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.779" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
+<status status="PASS" starttime="20220204 23:23:06.764" endtime="20220204 23:23:06.779"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Button Buy</arg>
+<arg>${buttonbuy}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.779" endtime="20220204 23:23:06.779"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:06.779" endtime="20220204 23:23:06.787"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${total}</var>
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:06.798" level="INFO">${total} = 63</msg>
+<status status="PASS" starttime="20220204 23:23:06.787" endtime="20220204 23:23:06.798"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Number of articles ${total}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:06.799" endtime="20220204 23:23:06.799"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:05.721" endtime="20220204 23:23:06.799"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:01.107" endtime="20220204 23:23:06.799"/>
+</kw>
+<kw name="Based on available keyword and filter price &lt; 100.000" library="keywordSearch">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_skillacademy}</arg>
+<arg>chrome</arg>
+<arg>alias=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220204 23:23:06.800" level="INFO">Using existing browser from index 1.</msg>
+<msg timestamp="20220204 23:23:06.800" level="INFO">Opening url 'https://skillacademy.com/'</msg>
+<status status="PASS" starttime="20220204 23:23:06.799" endtime="20220204 23:23:09.674"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220204 23:23:09.674" endtime="20220204 23:23:09.675"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>${skillavailable}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:09.675" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:09.675" endtime="20220204 23:23:09.743"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220204 23:23:09.743" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:10.027" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:10.027" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:09.743" endtime="20220204 23:23:10.049"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url_skillacademy}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220204 23:23:10.051" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:10.049" endtime="20220204 23:23:10.051"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${url_skillacademy}</arg>
+<arg>https://skillacademy.com/.*</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20220204 23:23:10.051" endtime="20220204 23:23:10.051"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:10.051" endtime="20220204 23:23:10.791"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:10.791" level="INFO">Clicking element 'xpath://div[contains(text(),'Harga')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:10.791" endtime="20220204 23:23:10.839"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&lt;100.000')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:10.840" endtime="20220204 23:23:10.850"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&lt;100.000')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:10.850" level="INFO">Clicking element 'xpath://div[contains(text(),'&lt;100.000')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:10.850" endtime="20220204 23:23:11.019"/>
+</kw>
+<kw name="Content Course" library="contentCourse">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.020" endtime="20220204 23:23:11.524"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${judul}</var>
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.539" level="INFO">${judul} = Tryout SKB CPNS Guru Bahasa Inggris</msg>
+<status status="PASS" starttime="20220204 23:23:11.524" endtime="20220204 23:23:11.539"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample Title ${judul}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.539" endtime="20220204 23:23:11.540"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.540" endtime="20220204 23:23:11.543"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructorname}</var>
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.559" level="INFO">${instructorname} = Tim Pembuat Soal CPNS</msg>
+<status status="PASS" starttime="20220204 23:23:11.543" endtime="20220204 23:23:11.559"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor name ${instructorname}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.559" endtime="20220204 23:23:11.559"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.559" endtime="20220204 23:23:11.566"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructordesc}</var>
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.580" level="INFO">${instructordesc} = Tim Pembuat Soal CPNS</msg>
+<status status="PASS" starttime="20220204 23:23:11.566" endtime="20220204 23:23:11.580"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor description ${instructordesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.580" endtime="20220204 23:23:11.581"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.581" endtime="20220204 23:23:11.586"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${coursedesc}</var>
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.601" level="INFO">${coursedesc} = Kelas Try Out SKB CPNS Guru Bahasa Inggris menyajikan 30 latihan soal, yang terdiri dari 10 soal pedagogik dan 20 soal kompetensi bidang guru Bahasa Inggris. Serta 100 soal Try Out yang terdiri dari 3...</msg>
+<status status="PASS" starttime="20220204 23:23:11.586" endtime="20220204 23:23:11.601"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample course description ${coursedesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.602" endtime="20220204 23:23:11.602"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.602" endtime="20220204 23:23:11.607"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.623" level="INFO">${starrating} = </msg>
+<status status="PASS" starttime="20220204 23:23:11.607" endtime="20220204 23:23:11.623"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Star Rating ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.623" endtime="20220204 23:23:11.623"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.623" endtime="20220204 23:23:11.627"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.639" level="INFO">${starrating} = 4.8</msg>
+<status status="PASS" starttime="20220204 23:23:11.627" endtime="20220204 23:23:11.639"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Text ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.640" endtime="20220204 23:23:11.640"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.640" endtime="20220204 23:23:11.644"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${ratingcount}</var>
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.657" level="INFO">${ratingcount} = (140 rating)</msg>
+<status status="PASS" starttime="20220204 23:23:11.644" endtime="20220204 23:23:11.657"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Count ${ratingcount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.657" endtime="20220204 23:23:11.657"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.657" endtime="20220204 23:23:11.661"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricebase}</var>
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.673" level="INFO">${pricebase} = Rp 100.000</msg>
+<status status="PASS" starttime="20220204 23:23:11.661" endtime="20220204 23:23:11.673"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Base ${pricebase}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.673" endtime="20220204 23:23:11.673"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.673" endtime="20220204 23:23:11.678"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricefinal}</var>
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.690" level="INFO">${pricefinal} = Rp 31.000</msg>
+<status status="PASS" starttime="20220204 23:23:11.678" endtime="20220204 23:23:11.690"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Sample Title</arg>
+<arg>${pricefinal}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.690" endtime="20220204 23:23:11.691"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.691" endtime="20220204 23:23:11.695"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${buttonbuy}</var>
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.711" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
+<status status="PASS" starttime="20220204 23:23:11.695" endtime="20220204 23:23:11.711"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Button Buy</arg>
+<arg>${buttonbuy}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.711" endtime="20220204 23:23:11.711"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:11.711" endtime="20220204 23:23:11.715"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${total}</var>
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:11.726" level="INFO">${total} = 7</msg>
+<status status="PASS" starttime="20220204 23:23:11.715" endtime="20220204 23:23:11.726"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Number of articles ${total}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:11.726" endtime="20220204 23:23:11.726"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:11.019" endtime="20220204 23:23:11.726"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:06.799" endtime="20220204 23:23:11.726"/>
+</kw>
+<kw name="Based on available keyword and filter price &lt; 100.000 - 149.999" library="keywordSearch">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_skillacademy}</arg>
+<arg>chrome</arg>
+<arg>alias=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220204 23:23:11.727" level="INFO">Using existing browser from index 1.</msg>
+<msg timestamp="20220204 23:23:11.727" level="INFO">Opening url 'https://skillacademy.com/'</msg>
+<status status="PASS" starttime="20220204 23:23:11.727" endtime="20220204 23:23:14.131"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220204 23:23:14.132" endtime="20220204 23:23:14.133"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>${skillavailable}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:14.133" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:14.133" endtime="20220204 23:23:14.202"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220204 23:23:14.203" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:14.493" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:14.493" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:14.202" endtime="20220204 23:23:14.509"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url_skillacademy}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220204 23:23:14.512" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:14.509" endtime="20220204 23:23:14.512"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${url_skillacademy}</arg>
+<arg>https://skillacademy.com/.*</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20220204 23:23:14.512" endtime="20220204 23:23:14.512"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:14.512" endtime="20220204 23:23:14.981"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:14.982" level="INFO">Clicking element 'xpath://div[contains(text(),'Harga')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:14.982" endtime="20220204 23:23:15.039"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'100.000 - 149.999')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.039" endtime="20220204 23:23:15.050"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'100.000 - 149.999')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.050" level="INFO">Clicking element 'xpath://div[contains(text(),'100.000 - 149.999')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:15.050" endtime="20220204 23:23:15.207"/>
+</kw>
+<kw name="Content Course" library="contentCourse">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.208" endtime="20220204 23:23:15.435"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${judul}</var>
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.449" level="INFO">${judul} = Pemrograman Bahasa C# dan .NET Core</msg>
+<status status="PASS" starttime="20220204 23:23:15.436" endtime="20220204 23:23:15.449"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample Title ${judul}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.449" endtime="20220204 23:23:15.449"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.449" endtime="20220204 23:23:15.453"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructorname}</var>
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.467" level="INFO">${instructorname} = Wisnu Anggoro</msg>
+<status status="PASS" starttime="20220204 23:23:15.453" endtime="20220204 23:23:15.467"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor name ${instructorname}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.467" endtime="20220204 23:23:15.467"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.467" endtime="20220204 23:23:15.471"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructordesc}</var>
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.483" level="INFO">${instructordesc} = Backend Engineer</msg>
+<status status="PASS" starttime="20220204 23:23:15.472" endtime="20220204 23:23:15.483"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor description ${instructordesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.483" endtime="20220204 23:23:15.484"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.484" endtime="20220204 23:23:15.488"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${coursedesc}</var>
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.502" level="INFO">${coursedesc} = Detail Kelas
+C# adalah bahasa pemrograman buatan Microsoft yang serba guna dan relatif mudah digunakan. Sedangkan .NET Core adalah runtime atau penerjemah bahasa pemrograman agar komputer dapat menger...</msg>
+<status status="PASS" starttime="20220204 23:23:15.488" endtime="20220204 23:23:15.502"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample course description ${coursedesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.503" endtime="20220204 23:23:15.503"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.503" endtime="20220204 23:23:15.507"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.523" level="INFO">${starrating} = </msg>
+<status status="PASS" starttime="20220204 23:23:15.507" endtime="20220204 23:23:15.523"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Star Rating ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.523" endtime="20220204 23:23:15.523"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.523" endtime="20220204 23:23:15.529"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.543" level="INFO">${starrating} = 4.7</msg>
+<status status="PASS" starttime="20220204 23:23:15.529" endtime="20220204 23:23:15.543"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Text ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.543" endtime="20220204 23:23:15.543"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.543" endtime="20220204 23:23:15.550"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${ratingcount}</var>
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.564" level="INFO">${ratingcount} = (142 rating)</msg>
+<status status="PASS" starttime="20220204 23:23:15.550" endtime="20220204 23:23:15.564"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Count ${ratingcount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.564" endtime="20220204 23:23:15.564"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.565" endtime="20220204 23:23:15.569"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricebase}</var>
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.582" level="INFO">${pricebase} = Rp 779.000</msg>
+<status status="PASS" starttime="20220204 23:23:15.569" endtime="20220204 23:23:15.582"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Base ${pricebase}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.583" endtime="20220204 23:23:15.583"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.583" endtime="20220204 23:23:15.587"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricefinal}</var>
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.600" level="INFO">${pricefinal} = Rp 148.000</msg>
+<status status="PASS" starttime="20220204 23:23:15.587" endtime="20220204 23:23:15.600"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Sample Title</arg>
+<arg>${pricefinal}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.600" endtime="20220204 23:23:15.600"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.600" endtime="20220204 23:23:15.604"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${buttonbuy}</var>
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.617" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
+<status status="PASS" starttime="20220204 23:23:15.604" endtime="20220204 23:23:15.617"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Button Buy</arg>
+<arg>${buttonbuy}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.617" endtime="20220204 23:23:15.617"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:15.617" endtime="20220204 23:23:15.621"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${total}</var>
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:15.634" level="INFO">${total} = 1</msg>
+<status status="PASS" starttime="20220204 23:23:15.621" endtime="20220204 23:23:15.634"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Number of articles ${total}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:15.635" endtime="20220204 23:23:15.635"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:15.208" endtime="20220204 23:23:15.635"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:11.726" endtime="20220204 23:23:15.635"/>
+</kw>
+<kw name="Based on available keyword and filter price 150.000 - 200.000" library="keywordSearch">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_skillacademy}</arg>
+<arg>chrome</arg>
+<arg>alias=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220204 23:23:15.636" level="INFO">Using existing browser from index 1.</msg>
+<msg timestamp="20220204 23:23:15.636" level="INFO">Opening url 'https://skillacademy.com/'</msg>
+<status status="PASS" starttime="20220204 23:23:15.635" endtime="20220204 23:23:18.697"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220204 23:23:18.697" endtime="20220204 23:23:18.699"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>${skillavailable}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:18.699" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:18.699" endtime="20220204 23:23:18.858"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220204 23:23:18.859" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:19.142" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:19.142" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:18.859" endtime="20220204 23:23:19.158"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url_skillacademy}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220204 23:23:19.161" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:19.158" endtime="20220204 23:23:19.161"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${url_skillacademy}</arg>
+<arg>https://skillacademy.com/.*</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20220204 23:23:19.162" endtime="20220204 23:23:19.162"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:19.162" endtime="20220204 23:23:19.803"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:19.803" level="INFO">Clicking element 'xpath://div[contains(text(),'Harga')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:19.803" endtime="20220204 23:23:19.868"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'150.000 - 200.000')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:19.868" endtime="20220204 23:23:19.879"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'150.000 - 200.000')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:19.880" level="INFO">Clicking element 'xpath://div[contains(text(),'150.000 - 200.000')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:19.879" endtime="20220204 23:23:20.056"/>
+</kw>
+<kw name="Content Course" library="contentCourse">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.056" endtime="20220204 23:23:20.714"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${judul}</var>
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.747" level="INFO">${judul} = Lancar Wawancara Kerja Bahasa Inggris</msg>
+<status status="PASS" starttime="20220204 23:23:20.714" endtime="20220204 23:23:20.747"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample Title ${judul}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.747" endtime="20220204 23:23:20.747"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.747" endtime="20220204 23:23:20.751"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructorname}</var>
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.765" level="INFO">${instructorname} = Alexander Mulia, Kartika Akbaria</msg>
+<status status="PASS" starttime="20220204 23:23:20.752" endtime="20220204 23:23:20.765"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor name ${instructorname}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.766" endtime="20220204 23:23:20.766"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.766" endtime="20220204 23:23:20.770"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructordesc}</var>
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.782" level="INFO">${instructordesc} = Business Development, Vice President, Human Capital &amp; Corporate Affairs</msg>
+<status status="PASS" starttime="20220204 23:23:20.770" endtime="20220204 23:23:20.782"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor description ${instructordesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.782" endtime="20220204 23:23:20.782"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.782" endtime="20220204 23:23:20.786"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${coursedesc}</var>
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.803" level="INFO">${coursedesc} = Detail Kelas
+Bahasa Inggris sudah menjadi persyaratan dalam lamaran kerja. Bahkan, beberapa perusahaan menjadikan bahasa Inggris sebagai syarat wajib dalam kualifikasi mencari pekerja sehingga saat me...</msg>
+<status status="PASS" starttime="20220204 23:23:20.787" endtime="20220204 23:23:20.803"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample course description ${coursedesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.804" endtime="20220204 23:23:20.804"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.804" endtime="20220204 23:23:20.809"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.824" level="INFO">${starrating} = </msg>
+<status status="PASS" starttime="20220204 23:23:20.809" endtime="20220204 23:23:20.824"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Star Rating ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.824" endtime="20220204 23:23:20.824"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.824" endtime="20220204 23:23:20.829"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.841" level="INFO">${starrating} = 4.9</msg>
+<status status="PASS" starttime="20220204 23:23:20.829" endtime="20220204 23:23:20.841"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Text ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.842" endtime="20220204 23:23:20.842"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.842" endtime="20220204 23:23:20.846"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${ratingcount}</var>
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.858" level="INFO">${ratingcount} = (1205 rating)</msg>
+<status status="PASS" starttime="20220204 23:23:20.846" endtime="20220204 23:23:20.858"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Count ${ratingcount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.858" endtime="20220204 23:23:20.858"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.858" endtime="20220204 23:23:20.862"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricebase}</var>
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.875" level="INFO">${pricebase} = Rp 500.000</msg>
+<status status="PASS" starttime="20220204 23:23:20.862" endtime="20220204 23:23:20.875"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Base ${pricebase}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.875" endtime="20220204 23:23:20.875"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.875" endtime="20220204 23:23:20.880"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricefinal}</var>
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.893" level="INFO">${pricefinal} = Rp 200.000</msg>
+<status status="PASS" starttime="20220204 23:23:20.880" endtime="20220204 23:23:20.893"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Sample Title</arg>
+<arg>${pricefinal}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.893" endtime="20220204 23:23:20.893"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.894" endtime="20220204 23:23:20.897"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${buttonbuy}</var>
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.913" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
+<status status="PASS" starttime="20220204 23:23:20.898" endtime="20220204 23:23:20.913"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Button Buy</arg>
+<arg>${buttonbuy}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.913" endtime="20220204 23:23:20.913"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:20.913" endtime="20220204 23:23:20.917"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${total}</var>
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:20.930" level="INFO">${total} = 10</msg>
+<status status="PASS" starttime="20220204 23:23:20.917" endtime="20220204 23:23:20.930"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Number of articles ${total}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:20.930" endtime="20220204 23:23:20.930"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:20.056" endtime="20220204 23:23:20.931"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:15.635" endtime="20220204 23:23:20.931"/>
+</kw>
+<kw name="Based on available keyword and filter price &gt; 200.000" library="keywordSearch">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_skillacademy}</arg>
+<arg>chrome</arg>
+<arg>alias=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220204 23:23:20.931" level="INFO">Using existing browser from index 1.</msg>
+<msg timestamp="20220204 23:23:20.931" level="INFO">Opening url 'https://skillacademy.com/'</msg>
+<status status="PASS" starttime="20220204 23:23:20.931" endtime="20220204 23:23:23.382"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220204 23:23:23.382" endtime="20220204 23:23:23.388"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>${skillavailable}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:23.389" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:23.388" endtime="20220204 23:23:23.461"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220204 23:23:23.462" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:23.753" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:23.753" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:23.462" endtime="20220204 23:23:23.768"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url_skillacademy}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220204 23:23:23.770" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:23.769" endtime="20220204 23:23:23.770"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${url_skillacademy}</arg>
+<arg>https://skillacademy.com/.*</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20220204 23:23:23.770" endtime="20220204 23:23:23.770"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:23.770" endtime="20220204 23:23:24.274"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:24.275" level="INFO">Clicking element 'xpath://div[contains(text(),'Harga')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:24.275" endtime="20220204 23:23:24.352"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&gt;200.000')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:24.352" endtime="20220204 23:23:24.363"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&gt;200.000')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:24.363" level="INFO">Clicking element 'xpath://div[contains(text(),'&gt;200.000')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:24.363" endtime="20220204 23:23:24.516"/>
+</kw>
+<kw name="Content Course" library="contentCourse">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:24.516" endtime="20220204 23:23:25.168"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${judul}</var>
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.205" level="INFO">${judul} = Bahasa Inggris untuk Bisnis</msg>
+<status status="PASS" starttime="20220204 23:23:25.168" endtime="20220204 23:23:25.205"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample Title ${judul}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.205" endtime="20220204 23:23:25.205"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.205" endtime="20220204 23:23:25.210"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructorname}</var>
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.225" level="INFO">${instructorname} = Khairun Nisa, Irna Artiani, FAQIH</msg>
+<status status="PASS" starttime="20220204 23:23:25.210" endtime="20220204 23:23:25.225"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor name ${instructorname}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.225" endtime="20220204 23:23:25.225"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.226" endtime="20220204 23:23:25.230"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructordesc}</var>
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.243" level="INFO">${instructordesc} = -International Test Preparation Specialist di SUN Education Group, -Instructor di SUN Education, -Instructor di SUN Education</msg>
+<status status="PASS" starttime="20220204 23:23:25.230" endtime="20220204 23:23:25.243"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor description ${instructordesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.243" endtime="20220204 23:23:25.243"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.243" endtime="20220204 23:23:25.248"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${coursedesc}</var>
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.269" level="INFO">${coursedesc} = Detail Kelas
+Bahasa Inggris merupakan bahasa global yang digunakan dalam konteks profesional, terutama ketika kita berbisnis dengan orang lain. Penggunaan bahasa Inggris ini berkembang dengan pesat, b...</msg>
+<status status="PASS" starttime="20220204 23:23:25.248" endtime="20220204 23:23:25.269"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample course description ${coursedesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.269" endtime="20220204 23:23:25.270"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.270" endtime="20220204 23:23:25.277"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.296" level="INFO">${starrating} = </msg>
+<status status="PASS" starttime="20220204 23:23:25.277" endtime="20220204 23:23:25.296"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Star Rating ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.296" endtime="20220204 23:23:25.297"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.297" endtime="20220204 23:23:25.301"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.319" level="INFO">${starrating} = 4.9</msg>
+<status status="PASS" starttime="20220204 23:23:25.301" endtime="20220204 23:23:25.319"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Text ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.319" endtime="20220204 23:23:25.319"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.319" endtime="20220204 23:23:25.326"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${ratingcount}</var>
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.339" level="INFO">${ratingcount} = (710 rating)</msg>
+<status status="PASS" starttime="20220204 23:23:25.326" endtime="20220204 23:23:25.339"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Count ${ratingcount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.339" endtime="20220204 23:23:25.339"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.339" endtime="20220204 23:23:25.344"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricebase}</var>
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.357" level="INFO">${pricebase} = Rp 890.000</msg>
+<status status="PASS" starttime="20220204 23:23:25.344" endtime="20220204 23:23:25.357"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Base ${pricebase}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.357" endtime="20220204 23:23:25.357"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.357" endtime="20220204 23:23:25.363"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricefinal}</var>
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.377" level="INFO">${pricefinal} = Rp 250.000</msg>
+<status status="PASS" starttime="20220204 23:23:25.363" endtime="20220204 23:23:25.377"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Sample Title</arg>
+<arg>${pricefinal}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.377" endtime="20220204 23:23:25.377"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.377" endtime="20220204 23:23:25.383"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${buttonbuy}</var>
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.399" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
+<status status="PASS" starttime="20220204 23:23:25.383" endtime="20220204 23:23:25.399"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Button Buy</arg>
+<arg>${buttonbuy}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.399" endtime="20220204 23:23:25.399"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:25.400" endtime="20220204 23:23:25.404"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${total}</var>
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:25.420" level="INFO">${total} = 46</msg>
+<status status="PASS" starttime="20220204 23:23:25.404" endtime="20220204 23:23:25.420"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Number of articles ${total}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:25.420" endtime="20220204 23:23:25.420"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:24.516" endtime="20220204 23:23:25.420"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:20.931" endtime="20220204 23:23:25.420"/>
+</kw>
 <kw name="Based on available keyword and filter price &lt; 100.000 and duration 1 jam" library="keywordSearch">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url_skillacademy}</arg>
 <arg>chrome</arg>
 <arg>alias=Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220204 22:51:29.956" level="INFO">Opening browser 'chrome' to base url 'https://skillacademy.com/'.</msg>
-<status status="PASS" starttime="20220204 22:51:29.955" endtime="20220204 22:51:34.515"/>
+<msg timestamp="20220204 23:23:25.421" level="INFO">Using existing browser from index 1.</msg>
+<msg timestamp="20220204 23:23:25.421" level="INFO">Opening url 'https://skillacademy.com/'</msg>
+<status status="PASS" starttime="20220204 23:23:25.421" endtime="20220204 23:23:28.487"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220204 22:51:34.515" endtime="20220204 22:51:35.147"/>
+<status status="PASS" starttime="20220204 23:23:28.487" endtime="20220204 23:23:28.489"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>css:input[data-testid='search-input-field']</arg>
 <arg>${skillavailable}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:35.147" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
-<status status="PASS" starttime="20220204 22:51:35.147" endtime="20220204 22:51:35.257"/>
+<msg timestamp="20220204 23:23:28.489" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:28.489" endtime="20220204 23:23:28.558"/>
 </kw>
 <kw name="Press Keys" library="SeleniumLibrary">
 <arg>css:input[data-testid='search-input-field']</arg>
 <arg>ENTER</arg>
 <doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<msg timestamp="20220204 22:51:35.258" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
-<msg timestamp="20220204 22:51:35.525" level="INFO">Pressing special key ENTER to element.</msg>
-<msg timestamp="20220204 22:51:35.526" level="INFO">Releasing special key ENTER.</msg>
-<status status="PASS" starttime="20220204 22:51:35.258" endtime="20220204 22:51:35.548"/>
+<msg timestamp="20220204 23:23:28.558" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:28.851" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:28.851" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:28.558" endtime="20220204 23:23:28.878"/>
 </kw>
 <kw name="Get Location" library="SeleniumLibrary">
-<var>${URL}</var>
+<var>${url_skillacademy}</var>
 <doc>Returns the current browser window URL.</doc>
-<msg timestamp="20220204 22:51:35.551" level="INFO">${URL} = https://skillacademy.com/</msg>
-<status status="PASS" starttime="20220204 22:51:35.548" endtime="20220204 22:51:35.551"/>
+<msg timestamp="20220204 23:23:28.880" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:28.878" endtime="20220204 23:23:28.880"/>
 </kw>
 <kw name="Should Match Regexp" library="BuiltIn">
-<arg>${URL}</arg>
+<arg>${url_skillacademy}</arg>
 <arg>https://skillacademy.com/.*</arg>
 <doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
-<status status="PASS" starttime="20220204 22:51:35.552" endtime="20220204 22:51:35.552"/>
+<status status="PASS" starttime="20220204 23:23:28.880" endtime="20220204 23:23:28.880"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'Harga')]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:35.552" endtime="20220204 22:51:36.356"/>
+<status status="PASS" starttime="20220204 23:23:28.880" endtime="20220204 23:23:29.545"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'Harga')]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:36.357" level="INFO">Clicking element 'xpath://div[contains(text(),'Harga')]'.</msg>
-<status status="PASS" starttime="20220204 22:51:36.356" endtime="20220204 22:51:36.425"/>
+<msg timestamp="20220204 23:23:29.545" level="INFO">Clicking element 'xpath://div[contains(text(),'Harga')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:29.545" endtime="20220204 23:23:29.594"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'&lt;100.000')]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:36.426" endtime="20220204 22:51:36.435"/>
+<status status="PASS" starttime="20220204 23:23:29.594" endtime="20220204 23:23:29.602"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'&lt;100.000')]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:36.435" level="INFO">Clicking element 'xpath://div[contains(text(),'&lt;100.000')]'.</msg>
-<status status="PASS" starttime="20220204 22:51:36.435" endtime="20220204 22:51:36.579"/>
+<msg timestamp="20220204 23:23:29.602" level="INFO">Clicking element 'xpath://div[contains(text(),'&lt;100.000')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:29.602" endtime="20220204 23:23:29.764"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'Durasi')]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:36.579" endtime="20220204 22:51:37.055"/>
+<status status="PASS" starttime="20220204 23:23:29.764" endtime="20220204 23:23:30.216"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'Durasi')]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.055" level="INFO">Clicking element 'xpath://div[contains(text(),'Durasi')]'.</msg>
-<status status="PASS" starttime="20220204 22:51:37.055" endtime="20220204 22:51:37.085"/>
+<msg timestamp="20220204 23:23:30.217" level="INFO">Clicking element 'xpath://div[contains(text(),'Durasi')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:30.216" endtime="20220204 23:23:30.247"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'&lt;1 jam')]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.085" endtime="20220204 22:51:37.092"/>
+<status status="PASS" starttime="20220204 23:23:30.247" endtime="20220204 23:23:30.255"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>xpath://div[contains(text(),'&lt;1 jam')]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.093" level="INFO">Clicking element 'xpath://div[contains(text(),'&lt;1 jam')]'.</msg>
-<status status="PASS" starttime="20220204 22:51:37.092" endtime="20220204 22:51:37.182"/>
+<msg timestamp="20220204 23:23:30.256" level="INFO">Clicking element 'xpath://div[contains(text(),'&lt;1 jam')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:30.255" endtime="20220204 23:23:30.347"/>
 </kw>
 <kw name="Content Course" library="contentCourse">
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://*[contains(@data-testid,"course-title")]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.182" endtime="20220204 22:51:37.419"/>
+<status status="PASS" starttime="20220204 23:23:30.348" endtime="20220204 23:23:30.780"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${judul}</var>
 <arg>xpath://*[contains(@data-testid,"course-title")]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.441" level="INFO">${judul} = Tryout SKB CPNS Guru Bahasa Indonesia</msg>
-<status status="PASS" starttime="20220204 22:51:37.419" endtime="20220204 22:51:37.441"/>
+<msg timestamp="20220204 23:23:30.795" level="INFO">${judul} = Tryout SKB CPNS Guru Bahasa Indonesia</msg>
+<status status="PASS" starttime="20220204 23:23:30.780" endtime="20220204 23:23:30.795"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Grab Sample Title ${judul}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.442" endtime="20220204 22:51:37.442"/>
+<status status="PASS" starttime="20220204 23:23:30.795" endtime="20220204 23:23:30.795"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>css:h2[data-testid='instructor-name']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.442" endtime="20220204 22:51:37.450"/>
+<status status="PASS" starttime="20220204 23:23:30.795" endtime="20220204 23:23:30.799"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${instructorname}</var>
 <arg>css:h2[data-testid='instructor-name']</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.464" level="INFO">${instructorname} = Tim Pembuat Soal CPNS</msg>
-<status status="PASS" starttime="20220204 22:51:37.450" endtime="20220204 22:51:37.464"/>
+<msg timestamp="20220204 23:23:30.814" level="INFO">${instructorname} = Tim Pembuat Soal CPNS</msg>
+<status status="PASS" starttime="20220204 23:23:30.799" endtime="20220204 23:23:30.814"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Grab Sample instructor name ${instructorname}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.464" endtime="20220204 22:51:37.465"/>
+<status status="PASS" starttime="20220204 23:23:30.814" endtime="20220204 23:23:30.814"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>css:p[data-testid='instructor-description']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.465" endtime="20220204 22:51:37.472"/>
+<status status="PASS" starttime="20220204 23:23:30.814" endtime="20220204 23:23:30.818"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${instructordesc}</var>
 <arg>css:p[data-testid='instructor-description']</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.485" level="INFO">${instructordesc} = Tim Pembuat Soal CPNS</msg>
-<status status="PASS" starttime="20220204 22:51:37.472" endtime="20220204 22:51:37.485"/>
+<msg timestamp="20220204 23:23:30.833" level="INFO">${instructordesc} = Tim Pembuat Soal CPNS</msg>
+<status status="PASS" starttime="20220204 23:23:30.818" endtime="20220204 23:23:30.833"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Grab Sample instructor description ${instructordesc}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.485" endtime="20220204 22:51:37.485"/>
+<status status="PASS" starttime="20220204 23:23:30.833" endtime="20220204 23:23:30.833"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://*[contains(@data-testid,"course-description")]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.485" endtime="20220204 22:51:37.494"/>
+<status status="PASS" starttime="20220204 23:23:30.834" endtime="20220204 23:23:30.839"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${coursedesc}</var>
 <arg>xpath://*[contains(@data-testid,"course-description")]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.510" level="INFO">${coursedesc} = Kelas Try Out SKB CPNS Guru Bahasa Indonesia menyajikan 30 latihan soal, yang terdiri dari 10 soal pedagogik dan 20 soal kompetensi bidang guru Bahasa Indonesia. Serta 100 soal Try Out yang terdiri da...</msg>
-<status status="PASS" starttime="20220204 22:51:37.494" endtime="20220204 22:51:37.510"/>
+<msg timestamp="20220204 23:23:30.855" level="INFO">${coursedesc} = Kelas Try Out SKB CPNS Guru Bahasa Indonesia menyajikan 30 latihan soal, yang terdiri dari 10 soal pedagogik dan 20 soal kompetensi bidang guru Bahasa Indonesia. Serta 100 soal Try Out yang terdiri da...</msg>
+<status status="PASS" starttime="20220204 23:23:30.840" endtime="20220204 23:23:30.855"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Grab Sample course description ${coursedesc}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.510" endtime="20220204 22:51:37.510"/>
+<status status="PASS" starttime="20220204 23:23:30.855" endtime="20220204 23:23:30.855"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.510" endtime="20220204 22:51:37.521"/>
+<status status="PASS" starttime="20220204 23:23:30.855" endtime="20220204 23:23:30.859"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${starrating}</var>
 <arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.535" level="INFO">${starrating} = </msg>
-<status status="PASS" starttime="20220204 22:51:37.521" endtime="20220204 22:51:37.535"/>
+<msg timestamp="20220204 23:23:30.874" level="INFO">${starrating} = </msg>
+<status status="PASS" starttime="20220204 23:23:30.859" endtime="20220204 23:23:30.874"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Star Rating ${starrating}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.535" endtime="20220204 22:51:37.535"/>
+<status status="PASS" starttime="20220204 23:23:30.874" endtime="20220204 23:23:30.874"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>css:span[data-testid='rating-text']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.535" endtime="20220204 22:51:37.543"/>
+<status status="PASS" starttime="20220204 23:23:30.874" endtime="20220204 23:23:30.878"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${starrating}</var>
 <arg>css:span[data-testid='rating-text']</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.557" level="INFO">${starrating} = 4.8</msg>
-<status status="PASS" starttime="20220204 22:51:37.543" endtime="20220204 22:51:37.557"/>
+<msg timestamp="20220204 23:23:30.891" level="INFO">${starrating} = 4.8</msg>
+<status status="PASS" starttime="20220204 23:23:30.878" endtime="20220204 23:23:30.892"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Rating Text ${starrating}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.557" endtime="20220204 22:51:37.557"/>
+<status status="PASS" starttime="20220204 23:23:30.892" endtime="20220204 23:23:30.892"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>css:span[data-testid='rating-count']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.557" endtime="20220204 22:51:37.566"/>
+<status status="PASS" starttime="20220204 23:23:30.892" endtime="20220204 23:23:30.896"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${ratingcount}</var>
 <arg>css:span[data-testid='rating-count']</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.581" level="INFO">${ratingcount} = (122 rating)</msg>
-<status status="PASS" starttime="20220204 22:51:37.566" endtime="20220204 22:51:37.581"/>
+<msg timestamp="20220204 23:23:30.910" level="INFO">${ratingcount} = (122 rating)</msg>
+<status status="PASS" starttime="20220204 23:23:30.896" endtime="20220204 23:23:30.910"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Rating Count ${ratingcount}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.581" endtime="20220204 22:51:37.582"/>
+<status status="PASS" starttime="20220204 23:23:30.910" endtime="20220204 23:23:30.910"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>css:p[data-testid='price-base']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.582" endtime="20220204 22:51:37.589"/>
+<status status="PASS" starttime="20220204 23:23:30.910" endtime="20220204 23:23:30.913"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${pricebase}</var>
 <arg>css:p[data-testid='price-base']</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.603" level="INFO">${pricebase} = Rp 100.000</msg>
-<status status="PASS" starttime="20220204 22:51:37.589" endtime="20220204 22:51:37.603"/>
+<msg timestamp="20220204 23:23:30.927" level="INFO">${pricebase} = Rp 100.000</msg>
+<status status="PASS" starttime="20220204 23:23:30.913" endtime="20220204 23:23:30.927"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Price Base ${pricebase}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.603" endtime="20220204 22:51:37.604"/>
+<status status="PASS" starttime="20220204 23:23:30.927" endtime="20220204 23:23:30.927"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://*[contains(@data-testid,"price-final")]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.604" endtime="20220204 22:51:37.612"/>
+<status status="PASS" starttime="20220204 23:23:30.927" endtime="20220204 23:23:30.931"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${pricefinal}</var>
 <arg>xpath://*[contains(@data-testid,"price-final")]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.626" level="INFO">${pricefinal} = Rp 31.000</msg>
-<status status="PASS" starttime="20220204 22:51:37.612" endtime="20220204 22:51:37.626"/>
+<msg timestamp="20220204 23:23:30.945" level="INFO">${pricefinal} = Rp 31.000</msg>
+<status status="PASS" starttime="20220204 23:23:30.931" endtime="20220204 23:23:30.945"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Price Sample Title</arg>
 <arg>${pricefinal}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.626" endtime="20220204 22:51:37.627"/>
+<status status="PASS" starttime="20220204 23:23:30.945" endtime="20220204 23:23:30.946"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.627" endtime="20220204 22:51:37.635"/>
+<status status="PASS" starttime="20220204 23:23:30.946" endtime="20220204 23:23:30.950"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${buttonbuy}</var>
 <arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.647" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
-<status status="PASS" starttime="20220204 22:51:37.635" endtime="20220204 22:51:37.647"/>
+<msg timestamp="20220204 23:23:30.963" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
+<status status="PASS" starttime="20220204 23:23:30.950" endtime="20220204 23:23:30.963"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Button Buy</arg>
 <arg>${buttonbuy}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.647" endtime="20220204 22:51:37.647"/>
+<status status="PASS" starttime="20220204 23:23:30.963" endtime="20220204 23:23:30.964"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
 <arg>css:span[data-testid='total-result']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220204 22:51:37.648" endtime="20220204 22:51:37.656"/>
+<status status="PASS" starttime="20220204 23:23:30.964" endtime="20220204 23:23:30.970"/>
 </kw>
 <kw name="Get Text" library="SeleniumLibrary">
 <var>${total}</var>
 <arg>css:span[data-testid='total-result']</arg>
 <doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220204 22:51:37.669" level="INFO">${total} = 1</msg>
-<status status="PASS" starttime="20220204 22:51:37.656" endtime="20220204 22:51:37.669"/>
+<msg timestamp="20220204 23:23:30.983" level="INFO">${total} = 1</msg>
+<status status="PASS" starttime="20220204 23:23:30.970" endtime="20220204 23:23:30.983"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Number of articles ${total}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220204 22:51:37.669" endtime="20220204 22:51:37.670"/>
+<status status="PASS" starttime="20220204 23:23:30.983" endtime="20220204 23:23:30.984"/>
 </kw>
-<status status="PASS" starttime="20220204 22:51:37.182" endtime="20220204 22:51:37.670"/>
+<status status="PASS" starttime="20220204 23:23:30.347" endtime="20220204 23:23:30.984"/>
 </kw>
-<status status="PASS" starttime="20220204 22:51:29.955" endtime="20220204 22:51:37.670"/>
+<status status="PASS" starttime="20220204 23:23:25.421" endtime="20220204 23:23:30.984"/>
+</kw>
+<kw name="Based on available keyword and filter price &lt; 100.000 and duration 1 jam and urutkan" library="keywordSearch">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_skillacademy}</arg>
+<arg>chrome</arg>
+<arg>alias=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220204 23:23:30.984" level="INFO">Using existing browser from index 1.</msg>
+<msg timestamp="20220204 23:23:30.984" level="INFO">Opening url 'https://skillacademy.com/'</msg>
+<status status="PASS" starttime="20220204 23:23:30.984" endtime="20220204 23:23:33.283"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220204 23:23:33.283" endtime="20220204 23:23:33.284"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>${skillavailable}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:33.285" level="INFO">Typing text 'Bahasa Inggris' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:33.285" endtime="20220204 23:23:33.439"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220204 23:23:33.439" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:33.716" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:33.716" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:33.439" endtime="20220204 23:23:33.746"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url_skillacademy}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220204 23:23:33.748" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:33.746" endtime="20220204 23:23:33.748"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${url_skillacademy}</arg>
+<arg>https://skillacademy.com/.*</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20220204 23:23:33.748" endtime="20220204 23:23:33.748"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:33.748" endtime="20220204 23:23:34.236"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Harga')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:34.236" level="INFO">Clicking element 'xpath://div[contains(text(),'Harga')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:34.236" endtime="20220204 23:23:34.293"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&lt;100.000')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:34.293" endtime="20220204 23:23:34.298"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&lt;100.000')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:34.298" level="INFO">Clicking element 'xpath://div[contains(text(),'&lt;100.000')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:34.298" endtime="20220204 23:23:34.454"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Durasi')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:34.454" endtime="20220204 23:23:34.903"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Durasi')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:34.903" level="INFO">Clicking element 'xpath://div[contains(text(),'Durasi')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:34.903" endtime="20220204 23:23:34.931"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&lt;1 jam')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:34.931" endtime="20220204 23:23:34.935"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'&lt;1 jam')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:34.935" level="INFO">Clicking element 'xpath://div[contains(text(),'&lt;1 jam')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:34.935" endtime="20220204 23:23:35.027"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Pilih')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.027" endtime="20220204 23:23:35.478"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Pilih')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.479" level="INFO">Clicking element 'xpath://div[contains(text(),'Pilih')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:35.478" endtime="20220204 23:23:35.509"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Rating Tertinggi')]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.509" endtime="20220204 23:23:35.516"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[contains(text(),'Rating Tertinggi')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.516" level="INFO">Clicking element 'xpath://div[contains(text(),'Rating Tertinggi')]'.</msg>
+<status status="PASS" starttime="20220204 23:23:35.516" endtime="20220204 23:23:35.587"/>
+</kw>
+<kw name="Content Course" library="contentCourse">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.587" endtime="20220204 23:23:35.821"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${judul}</var>
+<arg>xpath://*[contains(@data-testid,"course-title")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.835" level="INFO">${judul} = Tryout SKB CPNS Guru Bahasa Indonesia</msg>
+<status status="PASS" starttime="20220204 23:23:35.821" endtime="20220204 23:23:35.835"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample Title ${judul}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.835" endtime="20220204 23:23:35.836"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.836" endtime="20220204 23:23:35.840"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructorname}</var>
+<arg>css:h2[data-testid='instructor-name']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.854" level="INFO">${instructorname} = Tim Pembuat Soal CPNS</msg>
+<status status="PASS" starttime="20220204 23:23:35.840" endtime="20220204 23:23:35.854"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor name ${instructorname}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.854" endtime="20220204 23:23:35.854"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.854" endtime="20220204 23:23:35.859"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${instructordesc}</var>
+<arg>css:p[data-testid='instructor-description']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.871" level="INFO">${instructordesc} = Tim Pembuat Soal CPNS</msg>
+<status status="PASS" starttime="20220204 23:23:35.859" endtime="20220204 23:23:35.871"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample instructor description ${instructordesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.871" endtime="20220204 23:23:35.871"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.871" endtime="20220204 23:23:35.875"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${coursedesc}</var>
+<arg>xpath://*[contains(@data-testid,"course-description")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.890" level="INFO">${coursedesc} = Kelas Try Out SKB CPNS Guru Bahasa Indonesia menyajikan 30 latihan soal, yang terdiri dari 10 soal pedagogik dan 20 soal kompetensi bidang guru Bahasa Indonesia. Serta 100 soal Try Out yang terdiri da...</msg>
+<status status="PASS" starttime="20220204 23:23:35.876" endtime="20220204 23:23:35.890"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample course description ${coursedesc}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.890" endtime="20220204 23:23:35.890"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.890" endtime="20220204 23:23:35.894"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>xpath://*[contains(@data-testid,"star-rating")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.909" level="INFO">${starrating} = </msg>
+<status status="PASS" starttime="20220204 23:23:35.895" endtime="20220204 23:23:35.910"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Star Rating ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.910" endtime="20220204 23:23:35.910"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.910" endtime="20220204 23:23:35.913"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${starrating}</var>
+<arg>css:span[data-testid='rating-text']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.928" level="INFO">${starrating} = 4.8</msg>
+<status status="PASS" starttime="20220204 23:23:35.913" endtime="20220204 23:23:35.928"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Text ${starrating}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.928" endtime="20220204 23:23:35.928"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.928" endtime="20220204 23:23:35.932"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${ratingcount}</var>
+<arg>css:span[data-testid='rating-count']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.944" level="INFO">${ratingcount} = (122 rating)</msg>
+<status status="PASS" starttime="20220204 23:23:35.932" endtime="20220204 23:23:35.944"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Rating Count ${ratingcount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.944" endtime="20220204 23:23:35.944"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.944" endtime="20220204 23:23:35.948"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricebase}</var>
+<arg>css:p[data-testid='price-base']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.962" level="INFO">${pricebase} = Rp 100.000</msg>
+<status status="PASS" starttime="20220204 23:23:35.948" endtime="20220204 23:23:35.962"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Base ${pricebase}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.962" endtime="20220204 23:23:35.962"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.962" endtime="20220204 23:23:35.966"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${pricefinal}</var>
+<arg>xpath://*[contains(@data-testid,"price-final")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:35.981" level="INFO">${pricefinal} = Rp 31.000</msg>
+<status status="PASS" starttime="20220204 23:23:35.967" endtime="20220204 23:23:35.981"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Price Sample Title</arg>
+<arg>${pricefinal}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:35.981" endtime="20220204 23:23:35.982"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:35.982" endtime="20220204 23:23:35.987"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${buttonbuy}</var>
+<arg>xpath://*[contains(@data-testid,"buy-course")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:36.001" level="INFO">${buttonbuy} = BELI SEKARANG</msg>
+<status status="PASS" starttime="20220204 23:23:35.987" endtime="20220204 23:23:36.002"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Button Buy</arg>
+<arg>${buttonbuy}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:36.002" endtime="20220204 23:23:36.002"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:36.002" endtime="20220204 23:23:36.007"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${total}</var>
+<arg>css:span[data-testid='total-result']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:36.021" level="INFO">${total} = 1</msg>
+<status status="PASS" starttime="20220204 23:23:36.008" endtime="20220204 23:23:36.021"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Number of articles ${total}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:36.021" endtime="20220204 23:23:36.022"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:35.587" endtime="20220204 23:23:36.022"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:30.984" endtime="20220204 23:23:36.022"/>
+</kw>
+<kw name="Based on Not available keyword" library="keywordSearch">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url_skillacademy}</arg>
+<arg>chrome</arg>
+<arg>alias=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220204 23:23:36.023" level="INFO">Using existing browser from index 1.</msg>
+<msg timestamp="20220204 23:23:36.023" level="INFO">Opening url 'https://skillacademy.com/'</msg>
+<status status="PASS" starttime="20220204 23:23:36.022" endtime="20220204 23:23:39.261"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220204 23:23:39.261" endtime="20220204 23:23:39.265"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>${skillnotavailable}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:39.265" level="INFO">Typing text 'asdkasdas' into text field 'css:input[data-testid='search-input-field']'.</msg>
+<status status="PASS" starttime="20220204 23:23:39.265" endtime="20220204 23:23:39.328"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>css:input[data-testid='search-input-field']</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20220204 23:23:39.329" level="INFO">Sending key(s) ('ENTER',) to css:input[data-testid='search-input-field'] element.</msg>
+<msg timestamp="20220204 23:23:39.612" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20220204 23:23:39.612" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20220204 23:23:39.329" endtime="20220204 23:23:39.645"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url_skillacademy}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220204 23:23:39.647" level="INFO">${url_skillacademy} = https://skillacademy.com/</msg>
+<status status="PASS" starttime="20220204 23:23:39.645" endtime="20220204 23:23:39.647"/>
+</kw>
+<kw name="Should Match Regexp" library="BuiltIn">
+<arg>${url_skillacademy}</arg>
+<arg>https://skillacademy.com/.*</arg>
+<doc>Fails if ``string`` does not match ``pattern`` as a regular expression.</doc>
+<status status="PASS" starttime="20220204 23:23:39.647" endtime="20220204 23:23:39.647"/>
+</kw>
+<kw name="Content Course Not Found" library="contentNotFound">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath://*[contains(@data-testid,"empty-card-title")]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:39.648" endtime="20220204 23:23:40.106"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${titlenotfound}</var>
+<arg>xpath://*[contains(@data-testid,"empty-card-title")]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:40.122" level="INFO">${titlenotfound} = Maaf, kami tidak menemukan hasil untuk "asdkasdas"</msg>
+<status status="PASS" starttime="20220204 23:23:40.106" endtime="20220204 23:23:40.122"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Sample Title</arg>
+<arg>${titlenotfound}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:40.122" endtime="20220204 23:23:40.123"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='use-other-keyword']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:40.123" endtime="20220204 23:23:40.131"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${useotherkeyword}</var>
+<arg>css:p[data-testid='use-other-keyword']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:40.145" level="INFO">${useotherkeyword} = - Gunakan istilah pencarian lainnya</msg>
+<status status="PASS" starttime="20220204 23:23:40.131" endtime="20220204 23:23:40.145"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Use Other Keyword ${useotherkeyword}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:40.145" endtime="20220204 23:23:40.145"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>css:p[data-testid='use-general-term']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220204 23:23:40.145" endtime="20220204 23:23:40.156"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${usegeneralterm}</var>
+<arg>css:p[data-testid='use-general-term']</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220204 23:23:40.170" level="INFO">${usegeneralterm} = - Gunakan istilah pencarian yang lebih umum</msg>
+<status status="PASS" starttime="20220204 23:23:40.156" endtime="20220204 23:23:40.170"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Grab Use Other Keyword ${usegeneralterm}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220204 23:23:40.170" endtime="20220204 23:23:40.170"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:39.647" endtime="20220204 23:23:40.170"/>
+</kw>
+<status status="PASS" starttime="20220204 23:23:36.022" endtime="20220204 23:23:40.170"/>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20220204 22:51:37.670" endtime="20220204 22:51:37.729"/>
+<status status="PASS" starttime="20220204 23:23:40.171" endtime="20220204 23:23:40.234"/>
 </kw>
-<status status="PASS" starttime="20220204 22:51:29.955" endtime="20220204 22:51:37.729"/>
+<status status="PASS" starttime="20220204 23:23:01.106" endtime="20220204 23:23:40.234"/>
 </test>
-<doc>Performs Testing Based On Keyword</doc>
-<status status="PASS" starttime="20220204 22:51:29.865" endtime="20220204 22:51:37.729"/>
+<doc>Searching Keyword Skill on skillacademy</doc>
+<status status="PASS" starttime="20220204 23:23:01.017" endtime="20220204 23:23:40.234"/>
 </suite>
 <statistics>
 <total>
