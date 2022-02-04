@@ -42,7 +42,8 @@ Based on keyword page pageSize
 
 Based on keyword price duration rating 
     request.Create Session     skillacademy      ${url_skillacademy}        verify=true
-    ${response}=    request.Get Request              skillacademy                         api/skillacademy/discovery/search?keyword=${skillavailableapi}&page=${page}&sortBy=${sortByHighest}&price=${minPrice}&duration=${minDuration}
+    
+    ${response}=    request.Get Request              skillacademy                         api/skillacademy/discovery/search?page=${page}&pageSize=${pageSize}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDuration=${minDuration}&maxDuration=${maxDuration}&sortBy=${harga}&orderBy=${harga}
 
     ${status_code}=     convert to string   ${response.status_code}
     should be equal  ${status_code}     200
@@ -59,6 +60,8 @@ Based on keyword price duration rating
     should be equal as strings  ${json['status']}  ${success}
     should be equal as strings  ${json['message']}  ${success}
 
-    ${price}=  convert to number  ${json['data']['data'][0]['price']}
+    ${harga}=  convert to number  ${json['data']['data'][0]['harga']}
     ${min}=  convert to number  ${minPrice}
+    ${max}=  convert to number  ${maxPrice}
+    should be true  ${harga}>${min} and ${harga}<${maxPrice}
 

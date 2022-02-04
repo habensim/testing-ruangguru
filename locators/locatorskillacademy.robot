@@ -10,13 +10,14 @@ ${skillnotavailable}            asdkasdas
 ${skillavailableapi}            bahasa
 ${page}                         2 
 ${pageSize}                     2
-${minPrice}                     1
-${maxPrice}                     4
-${minDuration}                  1
-${maxDuration}                  4
+${minPrice}                     10000
+${maxPrice}                     25000
+${minDuration}                  100
+${maxDuration}                  800
 ${sortByHighest}                highestRating
 ${sortBymostReviews}            mostReviews
 ${sortBylatest}                 latest
 ${sortBylowestPrice}            lowestPrice
 ${sortByhighestPrice}           highestPrice
+${harga}  price
 
